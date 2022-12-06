@@ -1,0 +1,60 @@
+<!-- <ion-content [fullscreen]="true">
+  <ion-slide>
+    <ion-button (click)="scan()" expand="full" fill="outline" shape="round">
+      Scan code
+    </ion-button>
+  </ion-slide>
+</ion-content> -->
+
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">
+      Registro de horario
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding principal" [style.--background]="scanActive? '#00000000' : '#000000'">
+  <h1 >Bienvenido, Miguel</h1>
+  <h2 class="ion-justify-content-start">
+
+    <ion-item>
+      <ion-label></ion-label>
+      <ion-text slot="end">
+        {{formattedString}}
+      </ion-text>
+    </ion-item>
+  </h2>
+  <hr color="white">
+
+  <ion-toolbar class="jornada">
+    <ion-title>Inicio de jornada</ion-title>
+    <ion-buttons slot="end" (click)="scan()">
+      <ion-button><ion-icon name="scan-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar class="jornada">
+    <ion-title>Fin de jornada</ion-title>
+    <ion-buttons slot="end" (click)="scan()" >
+      <ion-button><ion-icon name="scan-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+
+  <!-- <ion-button (click)="scan()" expand="full" fill="outline" shape="round" slot="top">
+      Inicio de jornada
+    </ion-button> -->
+</ion-content>
+
+
+
+<!-- <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 2</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-explore-container name="Tab 2 page"></app-explore-container>
+</ion-content> -->
