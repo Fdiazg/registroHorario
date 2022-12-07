@@ -8,10 +8,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { ScannerComponent } from './pages/scanner/scanner.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ScannerComponent],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 

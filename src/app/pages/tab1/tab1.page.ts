@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ComponentFactoryResolver } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
-import { AlertController, Platform } from '@ionic/angular';
+import { AlertController, NavController, Platform } from '@ionic/angular';
 import { format, isToday, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
 
@@ -14,7 +14,7 @@ export class Tab1Page implements AfterViewInit {
   formattedString = '';
   scanActive: boolean = false;
 
-  constructor(private alertCtrl: AlertController, private platform: Platform) {
+  constructor(private alertCtrl: AlertController, private platform: Platform, private navCtrl: NavController) {
     this.setToday();
   }
 
@@ -66,21 +66,6 @@ export class Tab1Page implements AfterViewInit {
     }
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   checkPermisos() {
     return new Promise(async (resolve, reject) => {
       const status = await BarcodeScanner.checkPermission({ force: true });
@@ -112,4 +97,55 @@ export class Tab1Page implements AfterViewInit {
       }
     });
   }
+
+  async scanPageIngreso(){
+    this.navCtrl.navigateForward('/tabs/tab1/scanner');
+    if (this.platform.is('capacitor')) {
+      console.log('Comenzando a escanear');
+      const allowed = await this.checkPermisos();
+      if (allowed) {
+        this.scanActive = true;
+        // console.log('Status permisos', allowed);
+        const result = await BarcodeScanner.startScan();
+        if (result.hasContent) {
+          console.log(result.content);
+          // this.dataLocalService.guardarRegistro(result.format,result.content);
+          this.scanActive = false;
+          this.navCtrl.navigateBack('/tabs/tab1');
+        }
+      }
+    } else {
+      console.log('Corriendo en la web');
+      // this.dataLocalService.guardarRegistro('http','https://www.google.cl');
+
+    }
+  }
+  
+  async scanPageSalida(){
+
+    this.navCtrl.navigateForward('/tabs/tab1/scanner');
+
+
+    if (this.platform.is('capacitor')) {
+      console.log('Comenzando a escanear');
+      const allowed = await this.checkPermisos();
+      if (allowed) {
+        this.scanActive = true;
+        // console.log('Status permisos', allowed);
+        const result = await BarcodeScanner.startScan();
+        if (result.hasContent) {
+          console.log(result.content);
+          // this.dataLocalService.guardarRegistro(result.format,result.content);
+          this.scanActive = false;
+          this.navCtrl.navigateBack('/tabs/tab2');
+
+        }
+      }
+    } else {
+      console.log('Corriendo en la web');
+      // this.dataLocalService.guardarRegistro('http','https://www.google.cl');
+
+    }
+  }
+
 }

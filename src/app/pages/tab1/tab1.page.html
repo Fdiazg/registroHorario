@@ -29,6 +29,19 @@
 
   <ion-toolbar class="jornada">
     <ion-title>Inicio de jornada</ion-title>
+    <ion-buttons slot="end" (click)="scanPageIngreso()"> 
+      <ion-button><ion-icon name="scan-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar class="jornada">
+    <ion-title>Fin de jornada</ion-title>
+    <ion-buttons slot="end" (click)="scanPageSalida()" >
+      <ion-button><ion-icon name="scan-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <!-- <ion-toolbar class="jornada">
+    <ion-title>Inicio de jornada</ion-title>
     <ion-buttons slot="end" (click)="scan()">
       <ion-button><ion-icon name="scan-outline"></ion-icon></ion-button>
     </ion-buttons>
@@ -39,7 +52,7 @@
     <ion-buttons slot="end" (click)="scan()" >
       <ion-button><ion-icon name="scan-outline"></ion-icon></ion-button>
     </ion-buttons>
-  </ion-toolbar>
+  </ion-toolbar> -->
 
 
   <!-- <ion-button (click)="scan()" expand="full" fill="outline" shape="round" slot="top">
